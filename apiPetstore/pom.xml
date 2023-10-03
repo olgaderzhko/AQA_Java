@@ -19,7 +19,7 @@
         <jsonVersion>20230227</jsonVersion>
         <gsonVersion>2.10.1</gsonVersion>
         <lombokVersion>1.18.28</lombokVersion>
-        <seleniumChromeDriver>4.12.1</seleniumChromeDriver>
+
     </properties>
     <dependencies>
         <dependency>
@@ -42,11 +42,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombokVersion}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>${seleniumChromeDriver}</version>
         </dependency>
     </dependencies>
 </project>
