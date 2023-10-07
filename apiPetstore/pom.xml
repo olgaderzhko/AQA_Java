@@ -21,6 +21,7 @@
         <lombokVersion>1.18.28</lombokVersion>
 
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -43,5 +44,6 @@
             <version>${lombokVersion}</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 </project>

@@ -3,11 +3,18 @@ package com.petstore.api.tests.authTest;
 import com.github.javafaker.Faker;
 import com.petstore.api.auth.AuthController;
 import com.petstore.api.auth.User;
+import com.petstore.api.pets.PetCategoryEntity;
+import com.petstore.api.pets.PetEntity;
+import com.petstore.api.pets.TagEntity;
+import com.petstore.api.pets.PetController;
+import lombok.SneakyThrows;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 

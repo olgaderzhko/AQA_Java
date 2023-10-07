@@ -1,7 +1,7 @@
 package com.petstore.api.auth;
 
+import com.petstore.api.entities.ApiSettings;
 import okhttp3.*;
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
