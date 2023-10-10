@@ -54,7 +54,6 @@ public class PetController {
         Request request = new Request.Builder()
                 .post(requestBody)
                 .url(ApiSettings.URL + "/pet/" + id)
-//                .header(ApiSettings.CONTENT_TYPE, ApiSettings.TYPE_JSON)
                 .build();
 
         try (Response response = client.newCall(request).execute()) {

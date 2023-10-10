@@ -6,7 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.File;
 
-
 public class UpdatePetImageTest {
 
     @Test

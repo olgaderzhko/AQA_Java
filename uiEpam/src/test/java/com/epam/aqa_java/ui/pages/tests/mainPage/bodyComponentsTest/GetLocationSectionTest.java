@@ -9,11 +9,6 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.apache.commons.lang3.RegExUtils.replaceAll;
-
-/**
- * @author Derzhko.O
- */
 public class GetLocationSectionTest extends BaseTest {
 
     @Test
@@ -35,14 +30,52 @@ public class GetLocationSectionTest extends BaseTest {
         String expectedText = String.join("\n", expectedLocations);
         Assert.assertTrue(actualLocations.contains(expectedText));
     }
+
     @Test
-    public void clickOnAllLocations () throws InterruptedException {
+    public void locationsPresent()  {
         MainPage mainPage = openApp();
 
         BodyComponent bodyComponent = new BodyComponent();
         bodyComponent.scrollDownOurLocation();
 
-        List<String> actualAmericasLocations = bodyComponent.getAllTitlesFromAllLocations();
-        System.out.println(actualAmericasLocations);
+        Assert.assertNotNull(bodyComponent.locationAmericas);
+        Assert.assertNotNull(bodyComponent.locationApac);
+        Assert.assertNotNull(bodyComponent.locationEmea);
+    }
+
+    @Test
+    public void getAmericasLocations() throws InterruptedException {
+        MainPage mainPage = openApp();
+        String expectedLocations = "Canada, Colombia, Dominican Republic, Mexico".toUpperCase();
+        String[] expectedLocationsArray = expectedLocations.split(", ");
+
+        List<String> list = new BodyComponent().scrollDownOurLocation().clickAmericanArea().getActiveLocationsList();
+        System.out.println(list);
+
+        Assert.assertEquals(expectedLocationsArray, list.toArray());
+    }
+
+    @Test
+    public void getEmeaLocations() throws InterruptedException {
+        MainPage mainPage = openApp();
+        String expectedLocations = "ARMENIA, AUSTRIA, BELARUS, BELGIUM";
+        String[] expectedLocationsArray = expectedLocations.split(", ");
+
+        List<String> list = new BodyComponent().scrollDownOurLocation().clickEmeaArea().getActiveLocationsList();
+        System.out.println(list);
+
+        Assert.assertEquals(expectedLocationsArray, list.toArray());
+    }
+
+    @Test
+    public void getApacLocations() throws InterruptedException {
+        MainPage mainPage = openApp();
+        String expectedLocations = "AUSTRALIA, CHINA, HONG KONG SAR, INDIA";
+        String[] expectedLocationsArray = expectedLocations.split(", ");
+
+        List<String> list = new BodyComponent().scrollDownOurLocation().clickApacArea().getActiveLocationsList();
+        System.out.println(list);
+
+        Assert.assertEquals(expectedLocationsArray, list.toArray());
     }
 }

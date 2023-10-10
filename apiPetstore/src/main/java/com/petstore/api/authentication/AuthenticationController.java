@@ -1,4 +1,4 @@
-package com.petstore.api.auth;
+package com.petstore.api.authentication;
 
 import com.petstore.api.entities.ApiSettings;
 import okhttp3.*;
@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Objects;
 
-public class AuthController {
+public class AuthenticationController {
     public String createUser(User user) throws IOException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("username", user.getUsername());

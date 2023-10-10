@@ -1,12 +1,9 @@
 package com.petstore.api.pets;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Objects;
 
-/**
- * @author Derzhko.O
- */
+
 public class PetEntity {
     public int id;
     public long Id;

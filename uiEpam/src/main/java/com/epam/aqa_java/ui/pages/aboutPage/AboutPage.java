@@ -12,9 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.time.Duration;
 
-/**
- * @author Derzhko.O
- */
+
 public class AboutPage extends BasePage {
 
     @FindBy(xpath = "//a[contains(@class, 'header__logo-container desktop-logo')]/img[3]")

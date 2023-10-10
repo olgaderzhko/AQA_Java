@@ -1,4 +1,4 @@
-package com.petstore.api.auth;
+package com.petstore.api.authentication;
 
 import java.util.Objects;
 

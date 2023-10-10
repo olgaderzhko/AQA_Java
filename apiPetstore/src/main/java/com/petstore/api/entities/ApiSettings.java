@@ -1,8 +1,6 @@
 package com.petstore.api.entities;
 
-/**
- * @author Derzhko.O
- */
+
 public class ApiSettings {
 
     public static final String URL = "https://petstore.swagger.io/v2";

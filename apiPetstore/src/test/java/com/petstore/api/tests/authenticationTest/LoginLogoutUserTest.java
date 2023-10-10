@@ -1,7 +1,7 @@
-package com.petstore.api.tests.authTest;
+package com.petstore.api.tests.authenticationTest;
 
-import com.petstore.api.auth.AuthController;
-import com.petstore.api.auth.User;
+import com.petstore.api.authentication.AuthenticationController;
+import com.petstore.api.authentication.User;
 import okhttp3.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,13 +13,13 @@ import java.util.regex.Pattern;
 public class LoginLogoutUserTest {
     @Test
     public void loginLogoutUser() {
-        AuthController authController = new AuthController();
+        AuthenticationController authenticationController = new AuthenticationController();
         String username = "test";
         String password = "abc123";
         User user = new User(username, password);
 
-        authController.login(user);
-        Response response = authController.login(user);
+        authenticationController.login(user);
+        Response response = authenticationController.login(user);
 
         int statusCode = response.code();
         Assert.assertEquals(statusCode, 200, "The status code does not match the expected one (200)");
@@ -29,7 +29,7 @@ public class LoginLogoutUserTest {
         Matcher matcher = pattern.matcher(message);
         Assert.assertTrue(matcher.matches(), "Response message format is incorrect");
 
-        Response logoutResponse = authController.logout(user);
+        Response logoutResponse = authenticationController.logout(user);
         int logoutStatusCode = logoutResponse.code();
         Assert.assertEquals(logoutStatusCode, 200, "Logout failed with status code: " + logoutStatusCode);
     }
