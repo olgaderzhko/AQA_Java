@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class HeaderComponents extends BasePage {
 
-    @FindBy(xpath = "//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/div/section/div")
+    @FindBy(xpath = "//*[@id='wrapper']/div[2]/div[1]/header/div/div/section/div")
     private WebElement themeSwitcher;
 
     @FindBy(xpath = "//a[1]/img[2]")

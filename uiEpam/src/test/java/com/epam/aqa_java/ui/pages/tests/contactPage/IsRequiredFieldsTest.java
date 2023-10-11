@@ -3,16 +3,9 @@ package com.epam.aqa_java.ui.pages.tests.contactPage;
 import com.epam.aqa_java.ui.pages.contactPage.ContactPage;
 import com.epam.aqa_java.ui.pages.mainPage.MainPage;
 import com.epam.aqa_java.ui.pages.tests.baseTest.BaseTest;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 
-/**
- * @author Derzhko.O
- */
 public class IsRequiredFieldsTest extends BaseTest {
-
-
 
     @Test
     public void requiredFields(){

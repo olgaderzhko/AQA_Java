@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FooterComponents extends BasePage {
 
-    @FindBy(xpath = "//*[@id=\"wrapper\"]/div[3]/div[1]/footer/div/div/div[1]/div[2]/div")
+    @FindBy(xpath = "//*[@id='wrapper']/div[3]/div[1]/footer/div/div/div[1]/div[2]/div")
     private WebElement policiesSection;
 
 
@@ -25,7 +25,7 @@ public class FooterComponents extends BasePage {
 
     public void scrollDownToFooter() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"wrapper\"]/div[2]/div[1]/header/div")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='wrapper']/div[2]/div[1]/header/div")));
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 

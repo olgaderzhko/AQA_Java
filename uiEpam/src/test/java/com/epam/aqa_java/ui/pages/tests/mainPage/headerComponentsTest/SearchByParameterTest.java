@@ -7,9 +7,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * @author Derzhko.O
- */
+
 public class SearchByParameterTest extends BaseTest {
 
     @Test
@@ -19,8 +17,12 @@ public class SearchByParameterTest extends BaseTest {
         headerComponents.clickOnMagnifyingIcon();
         headerComponents.searchByParameter("AI");
 
+        String currentURL = driver.getCurrentUrl();
+        String expectedURL = "https://www.epam.com/search?q=AI";
+
         boolean areResultsPresent = driver.findElements(By.linkText("AI")).size() > 0;
         Assert.assertTrue(areResultsPresent, "Results are not present on the page");
+        Assert.assertEquals(currentURL, expectedURL, "The URL does not match the expected URL");
 
     }
 }

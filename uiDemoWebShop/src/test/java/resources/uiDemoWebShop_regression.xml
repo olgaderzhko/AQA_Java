@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="UI Tests Suite" verbose="1" parallel="false">
+    <test name="Category Tests" parallel="false" thread-count="5">
+        <classes>
+            <class name="com.tricentis.demowebshop.aqa_java.ui.tests.categoryProductListPageTests.ChangeProductsPerPageTest"/>
+            <class name="com.tricentis.demowebshop.aqa_java.ui.tests.categoryProductListPageTests.SortingItemsTests"/>
+        </classes>
+    </test>
+    <test name="Checkout Tests" parallel="false" thread-count="5">
+        <classes>
+            <class name="com.tricentis.demowebshop.aqa_java.ui.tests.checkoutPageTests.TestCheckoutProcess"/>
+        </classes>
+    </test>
+    <test name="Shopping Cart Tests" parallel="false" thread-count="5">
+        <classes>
+            <class name="com.tricentis.demowebshop.aqa_java.ui.tests.shoppingCartPageTests.RemoveProductFromShoppingCartTest"/>
+        </classes>
+    </test>
+    <test name="Authentication Tests" parallel="false" thread-count="5">
+        <classes>
+            <class name="com.tricentis.demowebshop.aqa_java.ui.tests.mainPageTests.authenticationTests.LogInTest"/>
+            <class name="com.tricentis.demowebshop.aqa_java.ui.tests.mainPageTests.authenticationTests.RegistrationTest"/>
+        </classes>
+    </test>
+</suite>

@@ -6,9 +6,6 @@ import com.tricentis.demowebshop.aqa_java.ui.tests.baseTest.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * @author Derzhko.O
- */
 public class ChangeProductsPerPageTest extends BaseTest {
     @Test
     public void changeProductPerPage() throws InterruptedException {

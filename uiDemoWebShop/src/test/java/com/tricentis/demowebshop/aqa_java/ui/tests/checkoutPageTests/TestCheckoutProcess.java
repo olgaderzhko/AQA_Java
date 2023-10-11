@@ -1,7 +1,6 @@
 package com.tricentis.demowebshop.aqa_java.ui.tests.checkoutPageTests;
 
 import com.tricentis.demowebshop.aqa_java.ui.pages.checkoutPage.CheckoutPage;
-import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.MainPage;
 import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.headerComponents.authentication.LoginPage;
 import com.tricentis.demowebshop.aqa_java.ui.pages.productCardPage.ProductCardPage;
 import com.tricentis.demowebshop.aqa_java.ui.pages.shoppingCartPage.ShoppingCartPage;
@@ -14,9 +13,6 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-/**
- * @author Derzhko.O
- */
 public class TestCheckoutProcess extends BaseTest {
     @Test
     private void testCheckoutProcess() throws InterruptedException {

@@ -1,4 +1,4 @@
-package com.tricentis.demowebshop.aqa_java.ui.tests.baseTest.listeners;
+package com.tricentis.demowebshop.aqa_java.ui.tests.listeners;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.service.ExtentTestManager;

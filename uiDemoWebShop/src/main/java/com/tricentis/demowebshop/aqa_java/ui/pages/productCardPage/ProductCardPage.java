@@ -10,9 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-/**
- * @author Derzhko.O
- */
+
 public class ProductCardPage extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class, 'block-category-navigation')]//a[contains(text(), 'Digital downloads')]")

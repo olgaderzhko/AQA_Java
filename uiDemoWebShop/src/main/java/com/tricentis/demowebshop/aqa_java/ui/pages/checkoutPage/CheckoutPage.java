@@ -12,9 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-/**
- * @author Derzhko.O
- */
+
 public class CheckoutPage extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class, 'step-title')]/h2[text()='Billing address']")

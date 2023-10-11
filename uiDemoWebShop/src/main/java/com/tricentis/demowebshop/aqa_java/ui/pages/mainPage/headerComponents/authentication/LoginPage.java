@@ -1,19 +1,12 @@
 package com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.headerComponents.authentication;
 
 import com.tricentis.demowebshop.aqa_java.ui.utils.BasePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 
-/**
- * @author Derzhko.O
- */
+
 public class LoginPage extends BasePage {
     @FindBy(xpath = "//a[contains (@href, '/login')]")
     private WebElement loginButtonOnMainPage;

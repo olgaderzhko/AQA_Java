@@ -1,8 +1,6 @@
 package com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.headerComponents.authentication;
 
-/**
- * @author Derzhko.O
- */
+
 public class UserEntity {
     public String firstName;
     public String lastname;

@@ -9,9 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-/**
- * @author Derzhko.O
- */
 public class SideCategoryMenu extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class, 'block-category-navigation')]//a[contains(text(), 'Computers')]")

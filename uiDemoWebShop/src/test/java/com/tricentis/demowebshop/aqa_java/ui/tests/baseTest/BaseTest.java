@@ -2,8 +2,7 @@ package com.tricentis.demowebshop.aqa_java.ui.tests.baseTest;
 
 import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.MainPage;
 
-import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.headerComponents.authentication.LoginPage;
-import com.tricentis.demowebshop.aqa_java.ui.tests.baseTest.listeners.CustomExtentReportListener;
+import com.tricentis.demowebshop.aqa_java.ui.tests.listeners.CustomExtentReportListener;
 import com.tricentis.demowebshop.aqa_java.ui.utils.DriverHolder;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

@@ -2,13 +2,10 @@ package com.epam.aqa_java.ui.pages.tests.aboutPage;
 
 import com.epam.aqa_java.ui.pages.aboutPage.AboutPage;
 import com.epam.aqa_java.ui.pages.tests.baseTest.BaseTest;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * @author Derzhko.O
- */
+
 public class VerifyLogoClickRedirectionTest extends BaseTest {
     @Test
     public void verifyLogoClickRedirection() {

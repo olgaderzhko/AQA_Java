@@ -1,7 +1,6 @@
 package com.epam.aqa_java.ui.pages.contactPage;
 
 import com.epam.aqa_java.ui.pages.utils.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,9 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Arrays;
 
-/**
- * @author Derzhko.O
- */
 public class ContactPage extends BasePage {
 
     @FindBy(xpath = "//button[contains(@class, 'button-ui')]")
@@ -23,16 +19,16 @@ public class ContactPage extends BasePage {
     @FindBy(xpath = "//div[@class = 'colctrl__holder']//div[@data-constraint-msg = 'Last name should be less than 50 characters'] ")
     public WebElement lastName;
 
-    @FindBy(xpath = "/html/body/div[2]/main/div[1]/div[2]/section/div[3]/div[6]/div/form/div[2]/div/div/div/div/div[3]/div/div[1]/div/div/div")
+    @FindBy(xpath = "//div[@class = 'colctrl__holder']//div[@data-constraint-msg = 'Incorrect email format']")
     public WebElement email;
 
-    @FindBy(xpath = "/html/body/div[2]/main/div[1]/div[2]/section/div[3]/div[6]/div/form/div[2]/div/div/div/div/div[3]/div/div[2]/div/div/div")
+    @FindBy(xpath = "//div[@class = 'colctrl__holder']//div[@data-constraint-msg = 'Only digits, space, plus, and semicolon are allowed. Maximum number of characters is 50.']")
     public WebElement phone;
 
-    @FindBy(xpath = "/html/body/div[2]/main/div[1]/div[2]/section/div[3]/div[6]/div/form/div[2]/div/div/div/div/div[8]/div[1]")
+    @FindBy(xpath = "//*[@id='_content_epam_en_about_who-we-are_contact_jcr_content_content-container_section_section-par_form_constructor']/div[2]/div/div/div/div/div[8]/div[1]")
     public WebElement epamHear;
 
-    @FindBy(xpath = "/html/body/div[2]/main/div[1]/div[2]/section/div[3]/div[6]/div/form/div[2]/div/div/div/div/div[9]/div/div[2]")
+    @FindBy(xpath = "//*[@id='_content_epam_en_about_who-we-are_contact_jcr_content_content-container_section_section-par_form_constructor']/div[2]/div/div/div/div/div[9]/div/div[2]")
     public WebElement consentAgreement;
 
     public ContactPage () {

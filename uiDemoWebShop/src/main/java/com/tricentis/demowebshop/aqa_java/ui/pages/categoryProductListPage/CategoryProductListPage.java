@@ -14,9 +14,6 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Derzhko.O
- */
 public class CategoryProductListPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='item-box']")
