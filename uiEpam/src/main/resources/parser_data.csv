@@ -1,0 +1,3 @@
+Value,ExpectedValue
+FilePathForDownloadFile,target/downloads/
+TestKey,value

@@ -23,30 +23,20 @@ public class LoginPage extends BasePage {
     @FindBy(linkText = "Log out")
     private WebElement logOutButton;
 
-    @FindBy(xpath = "//span[contains(text(), 'Login was unsuccessful. Please correct the errors and try again.')]")
-    private WebElement errorLoginUnsuccessful;
-
     public LoginPage() {
         PageFactory.initElements(driver, this);
     }
 
 
-    public LoginPage userLogIn(String email, String password) {
+    public void userLogIn(String email, String password) {
         setFieldValue(emailInput, email);
         setFieldValue(passwordInput, password);
 
         logInButtonOnWelcomeSigInPage.click();
-        return this;
     }
 
 
     public boolean isUserLoggedIn() {
-        if (logOutButton.isDisplayed()) {
-            return true;
-        } else if (errorLoginUnsuccessful.isDisplayed()) {
-            return false; // Login failed due to a validation error
-        } else {
-            return false;
-        }
+        return logOutButton.isDisplayed();
     }
 }

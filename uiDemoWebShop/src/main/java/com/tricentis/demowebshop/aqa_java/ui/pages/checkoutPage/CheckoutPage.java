@@ -1,16 +1,14 @@
 package com.tricentis.demowebshop.aqa_java.ui.pages.checkoutPage;
 
+import com.tricentis.demowebshop.aqa_java.ui.helpers.ScrollPageHelper;
 import com.tricentis.demowebshop.aqa_java.ui.utils.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 import java.util.List;
+
+import static com.tricentis.demowebshop.aqa_java.ui.helpers.WaitHelper.waitForVisibilityOfElement;
 
 
 public class CheckoutPage extends BasePage {
@@ -30,27 +28,24 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//input[@class='button-1 confirm-order-next-step-button' and @value='Confirm']")
     private WebElement confirmButton;
 
-    @FindBy(xpath = "//div[@class='section order-completed']//strong[text()='Your order has been successfully processed!']")
-    private WebElement successfullyOrderMessage;
+    @FindBy(xpath = "//div[@class='section payment-method']//ul[@class='method-list']")
+    private WebElement paymentList;
 
+    @FindBy(xpath = ".//input[@type='radio']")
+    private List <WebElement>  radioButtonOnPaymentList;
 
     public CheckoutPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public CheckoutPage clickContinueFotBillingAddress() {
-        if (billingAddressTitle.isDisplayed()) {
+
+    public void clickContinueForBillingAddress() {
             continueButtonBillingAddressSection.click();
-        } else {
-            System.out.println("The 'Billing Address' section is not displayed or the 'Continue' button is not displayed.");
-        }
-        return this;
     }
 
     public CheckoutPage choosePaymentMethod(String paymentMethodText) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        WebElement paymentMethodContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='section payment-method']//ul[@class='method-list']")));
-        List<WebElement> radioButtons = paymentMethodContainer.findElements(By.xpath(".//input[@type='radio']"));
+        waitForVisibilityOfElement(driver, paymentList);
+        List<WebElement> radioButtons = radioButtonOnPaymentList;
 
         for (WebElement radioButton : radioButtons) {
             WebElement label = radioButton.findElement(By.xpath(".//following-sibling::label"));
@@ -61,43 +56,34 @@ public class CheckoutPage extends BasePage {
                 break;
             }
         }
-
         return this;
     }
 
-
-    public CheckoutPage clickContinueFotPaymentMethod() {
+    public void clickContinueForPaymentMethodSection() {
         continueButtonPaymentMethodSection.click();
-        return this;
     }
-    public CheckoutPage clickContinueForPaymentInformation() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        WebElement continueButton = wait.until(ExpectedConditions.visibilityOf(continueButtonPaymentInformationSection));
+    public CheckoutPage clickContinueForPaymentInformationSection() {
+        WebElement continueButton = continueButtonPaymentInformationSection;
+        waitForVisibilityOfElement(driver, continueButton);
 
         if (continueButton.isDisplayed()) {
             continueButton.click();
-        } else {
-            System.out.println("The 'Continue' button is not displayed.");
         }
+
         return this;
     }
 
 
-    public CheckoutPage clickContinueForConfirmOrder() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView({block: 'end', behavior: 'smooth'});", confirmButton);
+    public void clickContinueForConfirmOrderSection() {
+        ScrollPageHelper scrollPageHelper = new ScrollPageHelper(driver);
+        scrollPageHelper.scrollIntoView(confirmButton);
 
-        WebElement continueButton = wait.until(ExpectedConditions.visibilityOf(confirmButton));
+        waitForVisibilityOfElement(driver, confirmButton);
 
-        if (continueButton.isDisplayed()) {
-            continueButton.click();
-        } else {
-            System.out.println("The 'Continue' button is not displayed.");
-        }
-        return this;
+        confirmButton.click();
     }
 }
+
 
 
 

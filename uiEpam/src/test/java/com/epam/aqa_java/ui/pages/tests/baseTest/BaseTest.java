@@ -1,8 +1,8 @@
 package com.epam.aqa_java.ui.pages.tests.baseTest;
 
-import com.epam.aqa_java.ui.pages.mainPage.MainPage;
 import com.epam.aqa_java.ui.pages.tests.listeners.CustomExtentReportListener;
 import com.epam.aqa_java.ui.pages.utils.DriverHolder;
+import com.epam.aqa_java.ui.pages.utils.Settings;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,6 +20,8 @@ import java.util.Map;
 public class BaseTest {
     protected WebDriver driver;
 
+    protected Settings settings = Settings.Instance;
+
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -33,6 +35,7 @@ public class BaseTest {
         driver.manage().window().maximize();
 
         DriverHolder.setDriver(driver);
+
     }
 
     @AfterClass(alwaysRun = true)
@@ -40,8 +43,4 @@ public class BaseTest {
         driver.quit();
     }
 
-    public MainPage openApp() {
-        driver.get("https://www.epam.com/");
-        return new MainPage();
-    }
 }

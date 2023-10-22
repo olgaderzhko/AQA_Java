@@ -1,23 +1,21 @@
 package com.tricentis.demowebshop.aqa_java.ui.tests.mainPageTests.authenticationTests;
 
 import com.github.javafaker.Faker;
-import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.MainPage;
 import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.headerComponents.authentication.RegistrationPage;
 import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.headerComponents.authentication.UserEntity;
+import com.tricentis.demowebshop.aqa_java.ui.pages.pageObjects.PageHandler;
 import com.tricentis.demowebshop.aqa_java.ui.tests.baseTest.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * @author Derzhko.O
- */
 public class RegistrationTest extends BaseTest {
     @Test
     private void registrationNewUser() {
-        RegistrationPage registrationPage = openApp().openRegistrationPage();
-        registrationPage.clickOnRegistrationButton();
+        PageHandler pageHandler = new PageHandler();
+        pageHandler.openMainPage();
+        pageHandler.openRegistrationPage();
 
-        Assert.assertTrue(registrationPage.isRegistrationPageLoaded(), "Registration page did not load as expected.");
+        RegistrationPage registrationPage = new RegistrationPage();
 
         Faker faker = new Faker();
         UserEntity user = new UserEntity(

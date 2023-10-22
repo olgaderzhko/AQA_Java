@@ -1,41 +1,38 @@
 package com.tricentis.demowebshop.aqa_java.ui.tests.checkoutPageTests;
 
+import com.tricentis.demowebshop.aqa_java.ui.helpers.WaitHelper;
 import com.tricentis.demowebshop.aqa_java.ui.pages.checkoutPage.CheckoutPage;
-import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.headerComponents.authentication.LoginPage;
+import com.tricentis.demowebshop.aqa_java.ui.pages.pageObjects.PageHandler;
 import com.tricentis.demowebshop.aqa_java.ui.pages.productCardPage.ProductCardPage;
 import com.tricentis.demowebshop.aqa_java.ui.pages.shoppingCartPage.ShoppingCartPage;
 import com.tricentis.demowebshop.aqa_java.ui.tests.baseTest.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 
 public class TestCheckoutProcess extends BaseTest {
     @Test
-    private void testCheckoutProcess() throws InterruptedException {
-        LoginPage loginPage = openApp().openLoginPage();
-        loginPage.userLogIn("olha.derzhko@test.gmail.com", "123456");
 
-        ProductCardPage productCardPage = openApp().openProductPage();
+    //Оскільки  стараюсь, щоб тести не залежили одне від одного,тут йду і спочатку додаю продукт в кошик
+    private void testCheckoutProcess(){
+        PageHandler pageHandler = new PageHandler();
+        pageHandler.openProductPage();
+
+        ProductCardPage productCardPage = new ProductCardPage();
         productCardPage.clickDigitalDownloadsSideCategoryMenu().clickProductTitle().AddToCard();
 
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         shoppingCartPage.clickOnShoppingCartButton().clickAgreeCheckout().clickCheckoutButton();
 
         CheckoutPage checkoutPage = new CheckoutPage();
-        checkoutPage.clickContinueFotBillingAddress();
+        checkoutPage.clickContinueForBillingAddress();
 
-        checkoutPage.choosePaymentMethod("Check / Money Order (5.00)").clickContinueFotPaymentMethod();
-        checkoutPage.clickContinueForPaymentInformation().clickContinueForConfirmOrder();
+        checkoutPage.choosePaymentMethod("Check / Money Order (5.00)").clickContinueForPaymentMethodSection();
+        checkoutPage.clickContinueForPaymentInformationSection().clickContinueForConfirmOrderSection();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         String successMessage = "Your order has been successfully processed!";
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("body"), successMessage));
+        WaitHelper.waitForTextToBePresentInBody(driver, successMessage);
 
         Assert.assertTrue(driver.getPageSource().contains(successMessage), "The success message is not displayed.");
-
     }
 }

@@ -1,5 +1,6 @@
 package com.tricentis.demowebshop.aqa_java.ui.utils;
 
+import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.MainPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,4 +32,11 @@ public class BasePage {
     protected  void clickButton(WebElement button){
         webDriverWait.until(ExpectedConditions.elementToBeClickable(button)).click();
     }
+
+    public MainPage openMainPage() {
+        driver.get("https://demowebshop.tricentis.com/");
+        return new MainPage();
+    }
+
+
 }

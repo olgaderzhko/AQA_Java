@@ -1,7 +1,9 @@
 package com.tricentis.demowebshop.aqa_java.ui.tests.baseTest;
 
+import com.tricentis.demowebshop.aqa_java.ui.helpers.LoginHelper;
 import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.MainPage;
 
+import com.tricentis.demowebshop.aqa_java.ui.pages.pageObjects.PageHandler;
 import com.tricentis.demowebshop.aqa_java.ui.tests.listeners.CustomExtentReportListener;
 import com.tricentis.demowebshop.aqa_java.ui.utils.DriverHolder;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -34,15 +36,16 @@ public class BaseTest {
         driver.manage().window().maximize();
 
         DriverHolder.setDriver(driver);
+
+        PageHandler pageHandler = new PageHandler();
+        new LoginHelper(pageHandler).logInUser("olha.derzhko@test.gmail.com", "123456");
     }
+
 
     @AfterClass(alwaysRun = true)
     public void cleanUp() {
         driver.quit();
     }
 
-    public MainPage openApp() {
-        driver.get("https://demowebshop.tricentis.com/");
-        return new MainPage();
-    }
+
 }

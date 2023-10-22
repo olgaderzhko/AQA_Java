@@ -2,7 +2,6 @@ package com.tricentis.demowebshop.aqa_java.ui.pages.shoppingCartPage;
 
 import com.tricentis.demowebshop.aqa_java.ui.pages.checkoutPage.CheckoutPage;
 import com.tricentis.demowebshop.aqa_java.ui.utils.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -14,7 +13,7 @@ public class ShoppingCartPage extends BasePage {
     @FindBy(xpath = "//div[@class='header-links']//span[@class='cart-label' and text()='Shopping cart']")
     private WebElement shoppingCartButton;
 
-    @FindBy(xpath= "//tr[@class='cart-item-row']//input[@type='checkbox']")
+    @FindBy(xpath = "//tr[@class='cart-item-row']//input[@type='checkbox']")
     private WebElement checkbox;
 
     @FindBy(xpath = "//input[contains (@name, 'updatecart')]")
@@ -29,6 +28,9 @@ public class ShoppingCartPage extends BasePage {
     @FindBy(xpath = "//div[contains (@class, 'checkout-buttons')]")
     private WebElement checkoutButton;
 
+    @FindBy(xpath = "//td[@class='product'][1]")
+    private List<WebElement> firstProductFromProductList;
+
     public ShoppingCartPage() {
         PageFactory.initElements(driver, this);
     }
@@ -39,41 +41,30 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public boolean isCartEmpty() {
-        if (shoppingCartEmptyText.isDisplayed()) {
-            System.out.println("The basket is now empty! The product has been removed successfully!");
-            return true;
-        } else {
-            return false;
-        }
+        return shoppingCartEmptyText.isDisplayed();
     }
 
-    public ShoppingCartPage removeProductFromShoppingCart() {
-            List<WebElement> productElements = driver.findElements(By.xpath("//td[@class='product'][1]"));
-            if (productElements.size() > 0) {
-                WebElement fistCheckbox = productElements.get(0);
-                checkbox.click();
-                updateShoppingCartButton.click();
-            } else {
-                System.out.println("No product were found to remove. The basket is empty");
-            }
-        return new ShoppingCartPage();
+    public void removeProductFromShoppingCart() {
+        List<WebElement> productElements = firstProductFromProductList;
+        if (productElements.size() > 0) {
+            checkbox.click();
+            updateShoppingCartButton.click();
+        }
+        new ShoppingCartPage();
     }
+
 
     public ShoppingCartPage clickAgreeCheckout() {
-        if (agreeCheckbox != null){
+        if (agreeCheckbox != null) {
             agreeCheckbox.click();
-        } else {
-            System.out.println("Checkbox 'I agree with the terms' - doesn't found");
         }
         return this;
     }
 
-    public CheckoutPage clickCheckoutButton() {
-        if (checkoutButton != null){
+    public void clickCheckoutButton() {
+        if (checkoutButton != null) {
             checkoutButton.click();
-        } else {
-            System.out.println("Checkout button not found");
         }
-        return new CheckoutPage();
+        new CheckoutPage();
     }
 }

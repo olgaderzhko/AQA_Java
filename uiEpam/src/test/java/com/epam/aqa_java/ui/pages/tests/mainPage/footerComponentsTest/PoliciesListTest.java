@@ -1,35 +1,28 @@
 package com.epam.aqa_java.ui.pages.tests.mainPage.footerComponentsTest;
 
 import com.epam.aqa_java.ui.pages.mainPage.FooterComponents;
-import com.epam.aqa_java.ui.pages.mainPage.MainPage;
+import com.epam.aqa_java.ui.pages.pageObjects.PageHandler;
 import com.epam.aqa_java.ui.pages.tests.baseTest.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PoliciesListTest extends BaseTest {
 
     @Test
-    public void policiesList() throws InterruptedException {
+    public void policiesList() {
+        PageHandler pageHandler = new PageHandler();
+        pageHandler.openMainPage();
 
-        MainPage mainPage = openApp();
         FooterComponents footerComponents = new FooterComponents();
         footerComponents.scrollDownToFooter();
 
         List<String> actualPolicies = footerComponents.getListPolicies();
 
-        List<String> expectedPolicies = new ArrayList<>();
-        expectedPolicies.add("INVESTORS");
-        expectedPolicies.add("OPEN SOURCE");
-        expectedPolicies.add("PRIVACY POLICY");
-        expectedPolicies.add("COOKIE POLICY");
-        expectedPolicies.add("APPLICANT PRIVACY NOTICE");
-        expectedPolicies.add("WEB ACCESSIBILITY");
+        String expectedText = "INVESTORS, OPEN SOURCE, PRIVACY POLICY, COOKIE POLICY, APPLICANT PRIVACY NOTICE, WEB ACCESSIBILITY";
+        List<String> expectedPolicyList = Arrays.asList(expectedText.split(", "));
 
-
-        String expectedText = String.join("\n", expectedPolicies).replaceAll(",", "");
-        Assert.assertTrue(actualPolicies.contains(expectedText));
+        Assert.assertTrue(actualPolicies.containsAll(expectedPolicyList));
     }
 }

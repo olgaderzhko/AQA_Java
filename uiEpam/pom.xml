@@ -19,6 +19,7 @@
         <seleniumChromeDriver>4.12.1</seleniumChromeDriver>
         <wbManagerVersion>5.5.3</wbManagerVersion>
         <extentReportVersion>1.0.7</extentReportVersion>
+        <openCsvVersion>5.8</openCsvVersion>
     </properties>
 
     <dependencies>
@@ -36,6 +37,11 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${wbManagerVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${openCsvVersion}</version>
         </dependency>
 
         <!-- Reports -->

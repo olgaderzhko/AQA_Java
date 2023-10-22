@@ -1,16 +1,14 @@
 package com.tricentis.demowebshop.aqa_java.ui.pages.categoryProductListPage;
 
+import com.tricentis.demowebshop.aqa_java.ui.helpers.WaitHelper;
 import com.tricentis.demowebshop.aqa_java.ui.utils.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +22,15 @@ public class CategoryProductListPage extends BasePage {
 
     @FindBy(xpath = "//*[@id='products-orderby']")
     private WebElement sortProductsDropdown;
+
+    @FindBy(xpath = "//div[@class = 'ajax-loading-block-window']")
+    private WebElement ajaxLoadingBlock;
+
+    @FindBy(xpath = "//h2[@class='product-title']")
+    private List <WebElement> productTitle;
+
+    @FindBy(className = "actual-price")
+    private List <WebElement> actualPrice;
 
     public CategoryProductListPage() {
         PageFactory.initElements(driver, this);
@@ -48,29 +55,27 @@ public class CategoryProductListPage extends BasePage {
         Select dropdown = new Select(sortProductsDropdown);
         dropdown.selectByVisibleText(String.valueOf(itemCount));
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class = 'ajax-loading-block-window']")));
+        WaitHelper.waitForInvisibilityOfElement(driver,ajaxLoadingBlock);
+
     }
 
     public List<String> getProductNames() {
-        List<WebElement> productNames = driver.findElements(By.xpath("//h2[@class='product-title']"));
+        List<WebElement> productNames = productTitle;
         List<String> sortedProductNames = new ArrayList<>();
 
         for (WebElement productName : productNames) {
             sortedProductNames.add(productName.getText());
         }
-
         return sortedProductNames;
     }
 
     public List<Double> getProductPrices() {
-        List<WebElement> productPrices = driver.findElements(By.className("actual-price"));
+        List<WebElement> productPrices = actualPrice;
         List<Double> sortedProductNames = new ArrayList<>();
 
         for (WebElement productName : productPrices) {
             sortedProductNames.add(Double.parseDouble(productName.getText()));
         }
-
         return sortedProductNames;
     }
 }
