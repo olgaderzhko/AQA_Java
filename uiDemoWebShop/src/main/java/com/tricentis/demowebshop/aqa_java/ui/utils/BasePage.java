@@ -1,6 +1,6 @@
 package com.tricentis.demowebshop.aqa_java.ui.utils;
 
-import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.MainPage;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

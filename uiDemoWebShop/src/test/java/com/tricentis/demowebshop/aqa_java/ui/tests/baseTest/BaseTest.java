@@ -1,7 +1,7 @@
 package com.tricentis.demowebshop.aqa_java.ui.tests.baseTest;
 
 import com.tricentis.demowebshop.aqa_java.ui.helpers.LoginHelper;
-import com.tricentis.demowebshop.aqa_java.ui.pages.mainPage.MainPage;
+
 
 import com.tricentis.demowebshop.aqa_java.ui.pages.pageObjects.PageHandler;
 import com.tricentis.demowebshop.aqa_java.ui.tests.listeners.CustomExtentReportListener;
