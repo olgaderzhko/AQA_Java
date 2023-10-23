@@ -33,10 +33,8 @@ public class BasePage {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(button)).click();
     }
 
-    public MainPage openMainPage() {
+    public void openMainPage() {
         driver.get("https://demowebshop.tricentis.com/");
-        return new MainPage();
     }
-
 
 }
